@@ -1,7 +1,7 @@
-# ARCHIVED
-I won't develop this plugin anymore since I found which-key far better than mine:
-https://github.com/folke/which-key.nvim
-
+# FORKED
+This is a fork which adjusts the plugin a little bit.
+- You will not see the keymaps nor commands that the description executes. This means there is only one column.
+- You no longer need to select a category first, which means that a much more speedy selection overall is achieved.
 
 # :telescope: telescope-command-palette.nvim
 
