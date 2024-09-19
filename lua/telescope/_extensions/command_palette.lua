@@ -63,7 +63,6 @@ local function commands(opts, table)
                 local width = conf.width or conf.layout_config.width or
                     conf.layout_config[conf.layout_strategy].width or vim.o.columns
                 local tel_win_width = resolve.resolve_width(width)(nil, w, h) - #conf.selection_caret
-                local desc_width = math.floor(tel_win_width * 0.05)
 
                 -- NOTE: the width calculating logic is not exact, but approx enough
                 local displayer = entry_display.create({
@@ -90,7 +89,7 @@ local function commands(opts, table)
         attach_mappings = function(prompt_bufnr, map)
             actions.select_default:replace(function()
                 actions.close(prompt_bufnr)
-                -- temporarily workaround for telescope issue: 1599.
+
                 local selection = action_state.get_selected_entry()
                 if selection.value[3] == 1 then
                     vim.schedule(function()
@@ -104,20 +103,31 @@ local function commands(opts, table)
     }):find()
 end
 
-CpMenu = {
-    { "Debugging: Say Hello",                                        "Telescope" },
-    { "Debugging: Set Breakpoint and Start Debugging Configuration", "nh" },
-    { "Debugging: Why my program crash",                             "nh" },
-    { "Debugging: Aw shucks",                                        "nh" },
-    { "Debugging: Say Yeah",                                         "nh" },
-    { "Debugging: Say Nah",                                          "nh" },
-}
+
+-- CpMenu = {
+--     { "Debug: Pause",                          ":lua require'dap'.pause()" },
+--     { "Debug: Step into",                      ":lua require'dap'.step_into()" },
+--     { "Debug: Step back",                      ":lua require'dap'.step_back()" },
+--     { "Debug: Step over",                      ":lua require'dap'.step_over()" },
+--     { "Debug: Step out",                       ":lua require'dap'.step_out()" },
+--     { "Debug: Frames",                         ":lua require'telescope'.extensions.dap.frames{}" },
+--     { "Debug: Current scopes",                 ":lua ViewCurrentScopes(); vim.cmd(\"wincmd w|vertical resize 40\")" },
+--     { "Debug: Current scopes floating window", ":lua ViewCurrentScopesFloatingWindow()" },
+--     { "Debug: Current value floating window",  ":lua ViewCurrentValueFloatingWindow()" },
+--     { "Debug: Commands",                       ":lua require'telescope'.extensions.dap.commands{}" },
+--     { "Debug: Configurations",                 ":lua require'telescope'.extensions.dap.configurations{}" },
+--     { "Debug: Repl",                           ":lua require'dap'.repl.open(); vim.cmd(\"wincmd w|resize 12\")" },
+--     { "Debug: Close",                          ":lua require'dap'.close(); require'dap'.repl.close()" },
+--     { "Debug: Run to cursor",                  ":lua require'dap'.run_to_cursor()" },
+--     { "Debug: Continue",                       ":lua require'dap'.continue()" },
+--     { "Debug: Clear breakpoints",              ":lua require('dap.breakpoints').clear()" },
+--     { "Debug: Breakpoints",                    ":lua require'telescope'.extensions.dap.list_breakpoints{}" },
+--     { "Debug: Toggle breakpoint",              ":lua require'dap'.toggle_breakpoint()" },
+-- }
 
 local function run()
-    commands(require("telescope.themes").vscode({}), list_of_commands(CpMenu))
+    commands(require("telescope.themes").vscode({}), list_of_commands())
 end
-
-run()
 
 return require("telescope").register_extension({
     setup = setup,
