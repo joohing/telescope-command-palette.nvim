@@ -103,28 +103,6 @@ local function commands(opts, table)
     }):find()
 end
 
-
--- CpMenu = {
---     { "Debug: Pause",                          ":lua require'dap'.pause()" },
---     { "Debug: Step into",                      ":lua require'dap'.step_into()" },
---     { "Debug: Step back",                      ":lua require'dap'.step_back()" },
---     { "Debug: Step over",                      ":lua require'dap'.step_over()" },
---     { "Debug: Step out",                       ":lua require'dap'.step_out()" },
---     { "Debug: Frames",                         ":lua require'telescope'.extensions.dap.frames{}" },
---     { "Debug: Current scopes",                 ":lua ViewCurrentScopes(); vim.cmd(\"wincmd w|vertical resize 40\")" },
---     { "Debug: Current scopes floating window", ":lua ViewCurrentScopesFloatingWindow()" },
---     { "Debug: Current value floating window",  ":lua ViewCurrentValueFloatingWindow()" },
---     { "Debug: Commands",                       ":lua require'telescope'.extensions.dap.commands{}" },
---     { "Debug: Configurations",                 ":lua require'telescope'.extensions.dap.configurations{}" },
---     { "Debug: Repl",                           ":lua require'dap'.repl.open(); vim.cmd(\"wincmd w|resize 12\")" },
---     { "Debug: Close",                          ":lua require'dap'.close(); require'dap'.repl.close()" },
---     { "Debug: Run to cursor",                  ":lua require'dap'.run_to_cursor()" },
---     { "Debug: Continue",                       ":lua require'dap'.continue()" },
---     { "Debug: Clear breakpoints",              ":lua require('dap.breakpoints').clear()" },
---     { "Debug: Breakpoints",                    ":lua require'telescope'.extensions.dap.list_breakpoints{}" },
---     { "Debug: Toggle breakpoint",              ":lua require'dap'.toggle_breakpoint()" },
--- }
-
 local function run()
     commands(require("telescope.themes").vscode({}), list_of_commands())
 end
