@@ -28,7 +28,7 @@ function themes.vscode(opts)
                 return math.min(max_columns, 120)
             end,
             height = function(_, _, max_lines)
-                return math.min(max_lines, 15)
+                return math.min(max_lines, 50)
             end,
         },
     }
