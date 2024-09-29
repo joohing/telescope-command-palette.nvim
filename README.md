@@ -36,10 +36,18 @@ require('telescope').setup({
 require('telescope').load_extension('command_palette')
 ```
 
-Note that this example requires nvim-dap. You could then map something like
+Note that this example requires nvim-dap to work with the debug commands. You could then map something like
 
 ```
 vim.keymap.set('n', '<D-P>', function() vim.cmd(":Telescope command_palette") end, {})
 ```
 
-Which means `cmd+shift+P`. You are now ready to become a true VS-Coder.
+Which means `cmd+shift+P`. You are now ready to become a true VS-Coder!
+
+The plugin also exports a global variable, `Previous_palette_command`, which simply contains whatever you just selected. It's good for repeating e.g. the command for running a test. You could map it to something like:
+
+```
+vim.keymap.set('n', '<D-;>', function() vim.cmd(Previous_palette_command) end, {})
+```
+
+You can now hit `cmd-;` to repeat the last command you executed using the plugin.
