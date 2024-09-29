@@ -9,6 +9,8 @@ local resolve = require "telescope.config.resolve"
 
 local CpMenu = require("command_palette").CpMenu
 
+Previous_palette_command = ""
+
 local function setup(cpMenu)
     require("command_palette").CpMenu = cpMenu or {}
     CpMenu = require("command_palette").CpMenu
@@ -96,6 +98,7 @@ local function commands(opts, table)
                         vim.cmd("startinsert! ")
                     end)
                 end
+                Previous_palette_command = selection.value[2]
                 vim.api.nvim_exec(selection.value[2], true)
             end)
             return true
