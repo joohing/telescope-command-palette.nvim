@@ -1,7 +1,8 @@
 # FORKED
 This is a fork which adjusts the plugin a little bit.
-- You will not see the keymaps nor commands that the description executes. This means there is only one column.
+- You will not see the keymaps nor commands that the description executes. This means there is only one column: a textual description of the command.
 - You no longer need to select a category first, which means that a much more speedy selection overall is achieved.
+- You can now use the global lua variable `Previous_palette_command`, which contains the text inserted into the vim cmdline for the previously executed command.
 
 # Setting it up
 
